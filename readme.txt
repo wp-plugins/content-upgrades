@@ -12,7 +12,7 @@ Use this plugin to create content upgrades, which require your readers to subscr
 
 == Description ==
 
-Content Upgrades plugin will help you to create “content specific bonuses” in your articles, that people have to opt in for.
+Content Upgrades plugin will help you to create "content specific bonuses" in your articles, that people have to opt in for.
 
 How does it work?
 
@@ -37,7 +37,7 @@ You can create an unlimited amount of content upgrades, but all of them should b
 
 = How can I make another popup email form? =
 
-There’s no way to do it. However you can customize it’s content for every post or article where you use it.
+There's no way to do it. However you can customize it's content for every post or article where you use it.
 
 == Screenshots ==
 
@@ -52,4 +52,4 @@ There’s no way to do it. However you can customize it’s content for every post o
 == Upgrade Notice ==
 
 = 1.0 =
-That’s the first version.
+That's the first version.
