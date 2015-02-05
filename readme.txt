@@ -12,7 +12,7 @@ Use this plugin to create content upgrades, which require your readers to subscr
 
 == Description ==
 
-Content Upgrades plugin will help you to create “content specific bonuses” in your articles, that people have to opt in for.
+Content Upgrades plugin will help you to create "content specific bonuses" in your articles, that people have to opt in for.
 
 How does it work?
 
