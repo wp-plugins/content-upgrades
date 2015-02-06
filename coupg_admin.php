@@ -365,7 +365,8 @@ function coupg_save_settings()
         {
             update_option('coupg_mcapikey', $_POST['coupg_mcapikey_list']);
             coupg_grab_lists();
-        }
+			echo "<div class='updated'><p>Settings were updated.</p></div>";
+        }		
     }
 }
 
