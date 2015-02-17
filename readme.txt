@@ -24,10 +24,10 @@ Content Upgrades plugin will help you to create "content specific bonuses" in yo
 
 
 **Get the PRO version at:** [http://contentupgradespro.com/](http://contentupgradespro.com/)
-- unlimited number of "content upgrades";
-- 5 new design templates of popups;
-- option to turn off Double Optin;
-- automatic bonus delivery by email.
+* unlimited number of "content upgrades";
+* 5 new design templates of popups;
+* option to turn off Double Optin;
+* automatic bonus delivery by email.
 
 == Installation ==
 
