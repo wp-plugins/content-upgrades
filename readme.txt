@@ -14,15 +14,20 @@ Use this plugin to create content upgrades, which require your readers to subscr
 
 Content Upgrades plugin will help you to create "content specific bonuses" in your articles, that people have to opt in for.
 
-How does it work?
+**How does it work?**
 
-1. You create a special page with bonus content;
-2. Then you customize a popup email form, that will advertise your bonuses;
-3. Then you link to this popup email form from the content of your article.
+1. The plugin gives you a shortcode that you can use to create a basic text link anywhere in the text of your article.
 
-So by clicking your special link, your visitors will get a popup, offering them to leave their email address to get the bonuses. Once they do - the plugin will redirect them to the page with bonus content.
+2. Once your visitors click that text link, a popup will appear, asking them to leave their email address.
 
-You can use the plugin on any page or post of your website.
+3. Once they submit their email address, they will get redirected to the page of your choice.
+
+
+**Get the PRO version at:** [http://contentupgradespro.com/](http://contentupgradespro.com/)
+- unlimited number of "content upgrades";
+- 5 new design templates of popups;
+- option to turn off Double Optin;
+- automatic bonus delivery by email.
 
 == Installation ==
 
