@@ -42,6 +42,7 @@ add_shortcode( 'content_upgrade', 'coupg_shortcode_handler' );
 add_action('wp_ajax_coupg_subscribe', 'coupg_subscribe');
 add_action('wp_ajax_nopriv_coupg_subscribe', 'coupg_subscribe');
 add_filter('post_updated_messages', 'coupg_updated_messages');
+add_shortcode('fancy_box', 'fancybox_shortcode_handler');
 if (has_action('wp_footer'))
 {
     add_action('wp_footer', 'coupg_process_footer');

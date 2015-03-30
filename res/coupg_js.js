@@ -35,7 +35,7 @@ $j('.coupg_sbt_button').on('click', function (e) {
                     alert('Unknown error has occured. Please notify administrator as soon as possible.\nError code: ' + e.error);
                 }
                  $j(this).removeAttr('disabled');
-				 $j(this).removeClass('coupg_act');
+                 $j(this).removeClass('coupg_act');
             }})
     }
 });

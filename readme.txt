@@ -3,8 +3,8 @@ Contributors: timsoulo
 Donate link: http://contentupgradespro.com/
 Tags: popup, locker, email, signup, bonus, content upgrades
 Requires at least: 3.0.1
-Tested up to: 4.0.1
-Stable tag: 4.3
+Tested up to: 4.1.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,11 +24,10 @@ Content Upgrades plugin will help you to create "content specific bonuses" in yo
 
 
 **Get the PRO version at:** [http://contentupgradespro.com/](http://contentupgradespro.com/)
-
-* unlimited number of "content upgrades";
-* 5 new design templates of popups;
-* option to turn off Double Optin;
-* automatic bonus delivery by email.
+- unlimited number of “content upgrades“;
+- 5 new design templates of popups;
+- option to turn off Double Optin;
+- automatic bonus delivery by email.
 
 == Installation ==
 
@@ -51,11 +50,16 @@ There's no way to do it. However you can customize it's content for every post o
 2. Admin panel
 
 == Changelog ==
+= 1.1 =
+* Added “FancyBox” feature and fixed a few minor bugs
 
 = 1.0 =
 * The very first stable version.
 
+
 == Upgrade Notice ==
+= 1.1 =
+Added “FancyBox” feature and fixed a few minor bugs.
 
 = 1.0 =
 That's the first version.

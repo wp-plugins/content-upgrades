@@ -16,10 +16,13 @@ $j('#coupg_admin_refresh_mc_lists').on('click', function () {
 });
 
 $j('#coupg_themes').change(function () {
-    var request = {action: "copug_change_theme_preview", coupg_preview_header: $j('#coupg_header').val(), coupg_preview_description: $j('#coupg_description').val(), coupg_preview_theme: $j("#coupg_themes :selected").attr('value'), coupg_preview_emailtext: $j('#coupg_default_email_text').val(), coupg_preview_privacy: $j('#coupg_privacy_statement').val(), coupg_preview_button: $j('#coupg_button_text').val()}
-    $j.ajax({type: "post", dataType: "json", url: coupg_admin_ajax_object.ajax_url, data: request, success: function (e) {
-            $j('#coupg_preview_container').html(e.boxhtml)
-        }})
+    if ($j('#coupg_themes option:selected').val() == '-')
+    {
+        $j('#coupg_get_more_themes_notice').css('display', 'inline-block');
+    }
+    else {
+        $j('#coupg_get_more_themes_notice').css('display', 'none');
+    }
 });
 //Live preview
 $j('#coupg_description').keyup(function () {
@@ -41,3 +44,32 @@ $j('#coupg_default_email_text').keyup(function () {
 function coupg_nl2br(str) {
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br />' + '$2');
 }
+$j('#coupg_ab').on('click', function () {
+    $j('#coupg_abheadline_warning').html('This feature is only available in PRO version');
+})
+$j('#coupg_em_cofirm_page').change(function () {
+    if ($j('#coupg_em_cofirm_page option:selected').val() == '-2')
+    {
+        $j('#custom_url_redir1').css('display', 'inline-block');
+    }
+    else {
+        $j('#custom_url_redir1').css('display', 'none');
+    }
+});
+$j('#coupg_upg_location_page').change(function () {
+    if ($j('#coupg_upg_location_page option:selected').val() == '-2')
+    {
+        $j('#custom_url_redir2').css('display', 'inline-block');
+    }
+    else {
+        $j('#custom_url_redir2').css('display', 'none');
+    }
+});
+$j('#coupg_client').change(function () {
+    if ($j('#coupg_client option:selected').val() == 'more')
+    {
+        $j('#coupg_more_clients_notice').show();
+    }
+    else {
+        $j('#coupg_more_clients_notice').hide();}
+});

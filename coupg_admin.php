@@ -6,6 +6,10 @@ function coupg_admin_inits()
     add_submenu_page(
             'edit.php?post_type=content-upgrades', 'New Upgrade', 'New Upgrade', 'manage_options', 'coupg_free_notice', 'coupg_show_free_notice_page');
     add_submenu_page(
+        'edit.php?post_type=content-upgrades', 'Fancy Boxes', 'Fancy Boxes', 'manage_options', 'fancyboxes', 'fancybox_page');
+    add_submenu_page(
+            'edit.php?post_type=content-upgrades', 'Statistics', 'Statistics', 'manage_options', 'coupg_stats_free_notice', 'coupg_show_stats_free_notice_page');
+    add_submenu_page(
             'edit.php?post_type=content-upgrades', 'Settings', 'Settings', 'manage_options', 'coupg_settings', 'coupg_show_settings_page');
     add_meta_box('coupg_options_metabox', 'Options', 'coupg_show_options_metabox', 'content-upgrades', 'normal', 'high');
     add_meta_box('coupg_override_metabox_post', 'Content Upgrade Options', 'coupg_show_override_metabox_post', 'post', 'normal', 'high');
@@ -19,10 +23,25 @@ function coupg_show_settings_page()
     require('settings.php');
 }
 
+function fancybox_page()
+{
+    if (isset($_GET['id'])) {
+        wp_enqueue_style('fb_admin_style', plugins_url('/res/fancy_styles.css', __FILE__));
+        require('res/fancybox.php');
+    } else {
+        wp_enqueue_style('fb_admin_style', plugins_url('/res/coupg_acss.css', __FILE__));
+        require('fancyboxes.php');
+    }
+}
 //How to use page callback
 function coupg_show_free_notice_page()
 {
     require('coupg_free_notice.php');
+}
+
+function coupg_show_stats_free_notice_page()
+{
+    require('coupg_stats_notice.php');
 }
 
 // Remove edit from bluk actions
@@ -49,7 +68,7 @@ function coupg_custom_columns_data($column, $post_id)
     {
         case "theme":
             {
-               
+
                 echo 'Deafault';
                 break;
             }
@@ -105,7 +124,8 @@ function coupg_show_options_metabox()
             .'</tr>'
             .'<tr>'
             .'<th style="width:20%"><label for="coupg_header">Headline</label></th>'
-            .'<td><textarea name="coupg_header" id="coupg_header" cols="60" rows="2" style="width:97%">'.get_post_meta($post->ID, 'coupg_header', true).'</textarea></td>'
+            .'<td><textarea name="coupg_header" id="coupg_header" cols="60" rows="2" style="width:97%">'.get_post_meta($post->ID, 'coupg_header', true).'</textarea>'
+            .'<a class="button button-primary" id="coupg_ab">+ A/B Headline</a><span id="coupg_abheadline_warning"></span></td>'
             .'</tr>'
             .'<tr><th style="width:20%"><label for="coupg_description">Subhead</label></th>'
             .'<td><textarea name="coupg_description" id="coupg_description" cols="60" rows="2" style="width:97%">'.get_post_meta($post->ID, 'coupg_description', true).'</textarea></td>'
@@ -126,7 +146,8 @@ function coupg_show_options_metabox()
             .'<th style="width:20%"><label for="coupg_themes">Theme</label></th>'
             .'<td><select name="coupg_themes" id="coupg_themes">'
             .'<option value="default">Default</option>'
-            .'</select><br />Get the <a href="http://contentupgradespro.com" target="_blank">PRO version</a>, if you need more themes.</td>'
+            .'<option value="-">Get more themes</option>'
+            .'</select><span id="coupg_get_more_themes_notice">Get the <a href="http://contentupgradespro.com/?utm_source=free_plugin&utm_medium=backend&utm_campaign=free_plugin" target="_blank">PRO version</a>, if you need more themes.</span></td>'
             .'</tr>'
             .'<tr>'
             .'<th style="width:20%"><label for="coupg_lists">Connect to email list</label></th>'
@@ -137,14 +158,14 @@ function coupg_show_options_metabox()
             .'<td>If the person is not in your list, forward him to this page: (usually this would be "please go to your inbox and confirm subscription" page)</td>'
             .'</tr>'
             .'<tr><th style="width:20%"><label for="coupg_pages">"Please confirm subscription" page</label></th>'
-            .'<td>'.coupg_form_pages_dropdown(get_post_meta($post->ID, 'coupg_em_cofirm_page', true), 'coupg_em_cofirm_page').'</td>'
+            .'<td>'.coupg_form_pages_dropdown(get_post_meta($post->ID, 'coupg_em_cofirm_page', true), 'coupg_em_cofirm_page').'<span id="custom_url_redir1">This feature is only available in PRO version</span></td>'
             .'</tr>'
             .'<tr>'
             .'<th style="width:20%"></th>'
             .'<td>If person is already in your list, forward him to the page with bonuses:</td>'
             .'</tr>'
             .'<tr><th style="width:20%"><label for="coupg_pages">"Thanks for subscribing" page</label></th>'
-            .'<td>'.coupg_form_pages_dropdown(get_post_meta($post->ID, 'coupg_upg_location_page', true), 'coupg_upg_location_page').'<br/>Put the bonus materials on this page</td>'
+            .'<td>'.coupg_form_pages_dropdown(get_post_meta($post->ID, 'coupg_upg_location_page', true), 'coupg_upg_location_page').'<span id="custom_url_redir2">This feature is only available in PRO version</span><br/>Put the bonus materials on this page</td>'
             .'</tr>'
             .'</table>';
     echo $table;
@@ -249,11 +270,17 @@ function coupg_save_options_metabox($post_id)
     // Page
     if (isset($_POST['coupg_em_cofirm_page']))
     {
-        update_post_meta($post_id, 'coupg_em_cofirm_page', $_POST['coupg_em_cofirm_page']);
+        if ($_POST['coupg_em_cofirm_page']!=-1&&$_POST['coupg_em_cofirm_page']!=-2)
+        {
+            update_post_meta($post_id, 'coupg_em_cofirm_page', $_POST['coupg_em_cofirm_page']);
+        }
     }
     if (isset($_POST['coupg_upg_location_page']))
     {
-        update_post_meta($post_id, 'coupg_upg_location_page', $_POST['coupg_upg_location_page']);
+        if ($_POST['coupg_upg_location_page']!=-1&&$_POST['coupg_upg_location_page']!=-2)
+        {
+            update_post_meta($post_id, 'coupg_upg_location_page', $_POST['coupg_upg_location_page']);
+        }
     }
 }
 
@@ -331,13 +358,13 @@ function coupg_form_pages_dropdown($selected, $name)
     $pages=$wpdb->get_results($query, ARRAY_A);
     if (count($pages)>0)
     {
-        $result='<select name="'.$name.'"><option value="-1">Please pick a page</option>';
+        $result='<select id="'.$name.'" name="'.$name.'"><option value="-1">Please pick a page</option>';
         foreach ($pages as $page_item)
         {
 
             $result.='<option '.selected($selected, $page_item['id'], false).' value="'.$page_item['id'].'">'.$page_item['post_title'].'</option>';
         }
-        $result.='</select>';
+        $result.='<option value="-2">Custom URL</option></select>';
         return $result;
     }
     else
@@ -365,7 +392,7 @@ function coupg_save_settings()
         {
             update_option('coupg_mcapikey', $_POST['coupg_mcapikey_list']);
             coupg_grab_lists();
-			echo "<div class='updated'><p>Settings were updated.</p></div>";
+            echo "<div class='updated'><p>Settings were updated.</p></div>";
         }
     }
 }
@@ -389,27 +416,27 @@ function coupg_show_preview_metabox()
 {
     global $post;
     ?>
-<div id="coupg_preview_container"><div id="coupg_upgrade_box_0_0" class="coupg_popup coupg_popup_default" style="display:block;position: relative ;background:none;overflow-y: visible;">
-                <div class="coupg_popup_wrapper">
-				<div class="coupg_artcl">
-				<div class="coupg_popup_content">
-				<div id="coupg_close_button_0_0" class="coupg_popup_close"></div>
-				<div class="coupg_popup_content_default">					
-				<div class="coupg_popup_top_default">
-				<span id="coupg_hidden_0_0" class="coupg_hidden">0</span>						
-                <div class="coupg_title" id="coupg_header_preview"><?php echo nl2br(get_post_meta($post->ID, 'coupg_header', true), false) ?></div>
-                <div class="coupg_descr" id="coupg_description_preview"><?php echo nl2br(get_post_meta($post->ID, 'coupg_description', true), false) ?></div>
-				</div>
-				<div class="coupg_subscribe_form_box coupg_clearfix">
-				<input id="coupg_email_0_0" class="coupg_left" type="text" placeholder="<?php echo get_post_meta($post->ID, 'coupg_default_email_text', true) ?>">
-				<button id="coupg_submit_button_0_0" class="coupg_sbt_button coupg_submit_button_default coupg_right" type="button"><?php echo get_post_meta($post->ID, 'coupg_button_text', true) ?></button>
-				</div>
-				<span class="coupg_popup_bottom_default" id="coupg_privacy_preview"><?php echo get_post_meta($post->ID, 'coupg_privacy_statement', true) ?></span>				
-				</div>
-        		</div>
-           		</div>
+    <div id="coupg_preview_container"><div id="coupg_upgrade_box_0_0" class="coupg_popup coupg_popup_default" style="display:block;position: relative ;background:none;overflow-y: visible;">
+            <div class="coupg_popup_wrapper">
+                <div class="coupg_artcl">
+                    <div class="coupg_popup_content">
+                        <div id="coupg_close_button_0_0" class="coupg_popup_close"></div>
+                        <div class="coupg_popup_content_default">					
+                            <div class="coupg_popup_top_default">
+                                <span id="coupg_hidden_0_0" class="coupg_hidden">0</span>						
+                                <div class="coupg_title" id="coupg_header_preview"><?php echo nl2br(get_post_meta($post->ID, 'coupg_header', true), false) ?></div>
+                                <div class="coupg_descr" id="coupg_description_preview"><?php echo nl2br(get_post_meta($post->ID, 'coupg_description', true), false) ?></div>
+                            </div>
+                            <div class="coupg_subscribe_form_box coupg_clearfix">
+                                <input id="coupg_email_0_0" class="coupg_left" type="text" placeholder="<?php echo get_post_meta($post->ID, 'coupg_default_email_text', true) ?>">
+                                <button id="coupg_submit_button_0_0" class="coupg_sbt_button coupg_submit_button_default coupg_right" type="button"><?php echo get_post_meta($post->ID, 'coupg_button_text', true) ?></button>
+                            </div>
+                            <span class="coupg_popup_bottom_default" id="coupg_privacy_preview"><?php echo get_post_meta($post->ID, 'coupg_privacy_statement', true) ?></span>				
+                        </div>
+                    </div>
                 </div>
-                </div></div>    
+            </div>
+        </div></div>    
     <?php
 }
 

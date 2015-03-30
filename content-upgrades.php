@@ -4,7 +4,7 @@
   Plugin Name: Content Upgrades
   Plugin URI: http://contentupgradespro.com
   Description: A free plugin that lets you create a single "content upgrade", but it can be customised for each page where you use it.
-  Version: 1.0
+  Version: 1.1
   Author: Tim Soulo
   Author URI: http://bloggerjet.com
  */
@@ -337,7 +337,7 @@ function coupg_process_footer()
 				</div>
 				<span class="coupg_popup_bottom_default">'.$item['privacy'].'</span>				
 				</div>
-                <div class="coupg_popup_pwdb">Powered by <a href="http://contentupgradespro.com" title="Content Upgrades Pro">Content Upgrades Pro</a></div>
+                <div class="coupg_popup_pwdb">Powered by <a href="http://contentupgradespro.com/?utm_source=free_plugin&utm_medium=frontend&utm_campaign=free_plugin" title="Content Upgrades Pro">Content Upgrades Pro</a></div>
         		</div>
            		</div>
                 </div>
@@ -345,3 +345,10 @@ function coupg_process_footer()
     }
     echo $boxes;}
 }
+
+function fancybox_shortcode_handler($atts, $content = null)
+{
+    wp_enqueue_style('fancy_style', plugins_url('/res/fancy_styles.css', __FILE__));
+    return '<div class="fb-bonusblock_1">'  . do_shortcode($content) . '</div>';
+}
+
