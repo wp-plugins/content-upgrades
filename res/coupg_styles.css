@@ -1,0 +1,254 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:600);
+.coupg_site_link{position: absolute;bottom: 7px;left: 10px;font-size:10px;color:#040404}
+.coupg_subscribe_form_body{display:block;margin-bottom: 30px;}
+.coupg_link_container {display:inline;}
+.coupg_link_container a{cursor: pointer;color: #3389b8; border-bottom: none;}
+.coupg_email{width: 100%;height: 48px;color: #a6a6a6;margin: 0 0 7px 0;border: 1px solid #c9d7de;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+.coupg_error_message {margin: 5px 0px; display: inline-block;font-weight: 700; color: #7f0404;}
+.coupg_hidden{display:none;}
+
+body.open_pop {
+    overflow: hidden;
+}
+
+
+.coupg_popup_close {
+    background-image: url('close.png');
+    background-position: 0 0;
+}
+.coupg_popup input, .coupg_descr,.coupg_popup button{ font-family: 'Open Sans', sans-serif;}
+.coupg_popup *:focus {outline: none !important}
+
+.coupg_popup {
+    display: none;
+    overflow-y: scroll;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    vertical-align: middle;
+}
+
+.coupg_popup .coupg_popup_wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px 0px;
+}
+
+.coupg_popup .coupg_popup_wrapper .coupg_artcl {
+    display: table-cell;
+    vertical-align: middle;
+}
+.coupg_popup .coupg_popup_content {
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+}
+.coupg_popup_pwdb {
+    position: absolute;
+    left: 0px;
+    bottom: -20px;
+    color: #FFF;
+    font-size: 12px;
+}
+.coupg_popup_pwdb a {
+
+    color: #FFF;
+    font-size: 12px;
+}
+.coupg_popup_close {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    -moz-opacity: 0.4;
+    -khtml-opacity: 0.4;
+    -webkit-opacity: 0.4;
+    opacity: 0.4;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+    filter: alpha(opacity=40);
+    border: none;
+    background-color: none;
+}
+.coupg_popup_close:hover {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+    -webkit-opacity: 0.7;
+    opacity: 0.7;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    filter: alpha(opacity=70);
+}
+.coupg_popup [type="button"].coupg_act {
+    position: relative;
+    color: transparent!important;
+    text-shadow: none!important;
+    text-indent: -9999;
+}
+.coupg_popup [type="button"].coupg_act:before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    background: url(loader.gif);
+}
+
+.coupg_popup_default .coupg_popup_close {
+    right: 10px;
+    top: 10px;
+}
+
+
+.coupg_popup_default .coupg_popup_content {
+    width: 668px;
+    background: #FFF;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 30px;
+}
+
+.coupg_popup_top_default {
+    padding: 4px 15px 18px 15px;
+}
+.coupg_popup_content_default .coupg_title {
+    color: #000;
+    font-size: 30px;
+    line-height: 30px;
+    font-family: arial;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 21px;
+    letter-spacing: -0.2px;
+}
+.coupg_popup_content_default .coupg_descr {
+    color: #999999;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.2px;
+}
+.coupg_popup_content_default .coupg_subscribe_form_box {
+    width: 314px;
+    margin: 0 auto;
+    padding: 6px 0px 0px 0px;
+}
+.coupg_popup_content_default .coupg_subscribe_form_box input[type="text"] {
+    color: #b8bdcb;
+    font-size: 16px;
+    background: #FFF;
+    padding: 12px 10px 14px 10px;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #c0cfd5;
+    letter-spacing: -0.2px;
+    margin-bottom: 7px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.coupg_popup_content_default .coupg_subscribe_form_box .coupg_submit_button_default {
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    margin: 0 auto;
+    font-size: 0px;
+    background: #ffcd00;
+    display: block;
+    color: #c45300;
+    font-size: 22px;
+    text-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+    letter-spacing: -0.2px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-bottom: 2px solid #c88800;
+    padding: 9px 0px 10px 0px;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.coupg_popup_content_default .coupg_subscribe_form_box .coupg_submit_button_default:hover {
+    background: #ffb400;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+.coupg_popup_bottom_default {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #61676a;
+    padding: 35px 0px 26px 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media screen and (max-width: 750px) {
+    .coupg_popup_default .coupg_popup_content {
+        width: 280px;
+    }
+    .coupg_popup_top_default {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .coupg_popup_content_default .coupg_title {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .coupg_popup_content_default .coupg_descr {
+        font-size: 16px;
+    }
+    .coupg_popup_default .coupg_subscribe_form_box  {
+        width: 240px;
+    }
+}
+.coupg_pr {
+    position: relative;
+}
+.coupg_act {
+    text-align: center;
+}
+.coupg_left {
+    float: left;
+}
+.coupg_right {
+    float: right;
+}
+.coupg_clear {
+    clear: both;
+}
+.coupg_clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}

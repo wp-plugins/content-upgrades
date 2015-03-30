@@ -1,0 +1,50 @@
+.fb-bonusblock_1 {
+    margin: 15px 0;
+    width: 100%;
+    color: #000;
+/*    font-size: 16px;
+    line-height: 22px;*/
+    padding: 15px 20px 15px 60px;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #fffe9a;
+    position: relative;
+}
+
+.fb-bonusblock_1 a {
+    color: #3389b8;
+    text-decoration: none;
+}
+
+.fb-bonusblock_1 a:hover {
+    text-decoration: underline;
+}
+
+.fb-bonusblock_1:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 23px;
+    top: 15px;
+    width: 23px;
+    height: 24px;
+}
+
+.fb-spr-sprite, .fb-bonusblock_1:before {
+    background: url('star.png') no-repeat;
+}
+
+
+.fb-bonusblock_1:before {
+    background-position: 0 0;
+}
+
+#coupg_preview_metabox .inside {
+    background: #222 url(lp_bg.png) repeat top left;
+    padding-top: 20px;
+}

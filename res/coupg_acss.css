@@ -1,0 +1,12 @@
+.coupg_admin_input{width:300px}
+.coupg_admin_label{width:300px}
+#coupg_settings_refresh_container {padding: 0px;}
+.coupg_hidden{display:none}
+#coupg_preview_metabox .inside{background: #222 url(lp_bg.png) repeat top left;padding-top:20px;}
+#coupg_subscribe_button_preview {margin-bottom: 30px;}
+.coupg_inline_error{font-weight: 700; color: #7f0404;}
+#coupg_admin_refresh_mc_lists{margin-top: 2px;margin-left: 10px;}
+#coupg_abheadline_warning, #custom_url_redir2, #custom_url_redir1 {font-weight: 700; color:#ff0033;margin-left:10px;line-height: 28px;}
+#coupg_get_more_themes_notice{display:none; margin-left:10px;line-height: 28px;}
+#custom_url_redir2, #custom_url_redir1 {display: none;}
+#coupg_more_clients_notice {display:none;margin:20px;}
